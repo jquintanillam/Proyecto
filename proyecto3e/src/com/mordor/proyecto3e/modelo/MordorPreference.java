@@ -18,7 +18,7 @@ public class MordorPreference extends JInternalFrame {
 	private JTextField textField_URL;
 	private JTextField textField_user;
 	private JTextField textField_password;
-
+	
 	
 	
 	/**
@@ -111,5 +111,53 @@ public class MordorPreference extends JInternalFrame {
 		);
 		panel.setLayout(gl_panel);
 
+	}
+
+
+
+	public JTextField getTxt_driver() {
+		return txt_driver;
+	}
+
+
+
+	public void setTxt_driver(JTextField txt_driver) {
+		this.txt_driver = txt_driver;
+	}
+
+
+
+	public JTextField getTextField_URL() {
+		return textField_URL;
+	}
+
+
+
+	public void setTextField_URL(JTextField textField_URL) {
+		this.textField_URL = textField_URL;
+	}
+
+
+
+	public JTextField getTextField_user() {
+		return textField_user;
+	}
+
+
+
+	public void setTextField_user(JTextField textField_user) {
+		this.textField_user = textField_user;
+	}
+
+
+
+	public JTextField getTextField_password() {
+		return textField_password;
+	}
+
+
+
+	public void setTextField_password(JTextField textField_password) {
+		this.textField_password = textField_password;
 	}
 }

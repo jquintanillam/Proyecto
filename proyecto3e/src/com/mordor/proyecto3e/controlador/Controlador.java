@@ -5,9 +5,17 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Properties;
 
 import javax.swing.JInternalFrame;
-
+import javax.swing.JTextField;
+import javax.swing.text.JTextComponent;
 
 import com.mordor.proyecto3e.conexion.MyOracleDataBase;
 import com.mordor.proyecto3e.elemento.Empleado;
@@ -26,6 +34,7 @@ public class Controlador implements ActionListener {
 	private MyOracleDataBase myOracleDataBase;
 	private MyTableModel<Empleado> mtm;
 	MyOracleDataBase modelo;
+	private JTextComponent jTextField;
 
 	
 	public Controlador(MordorLogin mordorLogin, MyOracleDataBase modelo) {
@@ -86,10 +95,63 @@ public class Controlador implements ActionListener {
 	}
 
 	private void preference() {
+		
 		mordorPre = new MordorPreference();
 		mordorLogin.getDesktopPane().add(mordorPre);
 		mordorPre.setVisible(true);
+		
+		leerDBProperties();
+		
+		mordorPre.setTextField_user(null);
+		mordorPre.setTextField_URL(null);
+		mordorPre.setTxt_driver(null);
+		mordorPre.setTextField_password(null);
+		
+		grabarDBProperties();
 
+	}
+
+	private void grabarDBProperties() {
+		try(OutputStream salida = new FileOutputStream("db.properties")){
+			
+			Properties propiedades = new Properties();
+			
+			propiedades.setProperty("ORACLE_DB_DRIVERS_CLASS", "oracle.jdbc.driver.OracleDriver");
+			propiedades.setProperty("ORACLE_DB_URL", "jdbc:oracle:thin:@192.168.1.60:1539:xe");
+			propiedades.setProperty("ORACLE_DB_USERNAME", "C##QUINTANILLA");
+			propiedades.setProperty("ORACLE_DB_PASSWORD", "123456");
+			
+			propiedades.store(salida, null);
+			
+		}catch(Exception e) {
+			
+		}
+		
+	}
+
+	private void leerDBProperties() {
+			
+		try(InputStream lectura = new FileInputStream("db.properties")){			
+			
+			Properties propiedades = new Properties();
+			
+			propiedades.load(lectura);
+			
+			propiedades.getProperty("ORACLE_DB_DRIVERS_CLASS");
+			propiedades.getProperty("ORACLE_DB_URL");
+			propiedades.getProperty("ORACLE_DB_USERNAME");
+			propiedades.getProperty("ORACLE_DB_PASSWORD");
+			
+			mordorPre.setTextField_user(null);
+			mordorPre.setTextField_URL(null);
+			mordorPre.setTxt_driver(null);
+			mordorPre.setTextField_password(null);
+			
+		}catch(Exception e){
+			
+		}
+		
+		
 	}
 
 	private void login() {
