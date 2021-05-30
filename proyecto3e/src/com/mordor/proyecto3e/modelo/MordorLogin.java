@@ -1,5 +1,6 @@
 package com.mordor.proyecto3e.modelo;
 
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -22,10 +23,7 @@ public class MordorLogin extends JFrame {
 	private JButton btnNewButton;
 	private JButton btnNewButton_preference;
 	private JDesktopPane desktopPane;
-
-	/**
-	 * Launch the application.
-	 */
+	private JButton button_tabla;
 
 	/**
 	 * Create the frame.
@@ -44,7 +42,8 @@ public class MordorLogin extends JFrame {
 		menuBar.add(mnExit);
 		
 		btnNewButton_preference = new JButton("Preferences");
-		btnNewButton_preference.setIcon(new ImageIcon(MordorLogin.class.getResource("/imganes/outline_settings_black_24dp.png")));
+		btnNewButton_preference.setEnabled(false);
+		btnNewButton_preference.setIcon(null);
 		mnExit.add(btnNewButton_preference);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -60,16 +59,22 @@ public class MordorLogin extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnOpcionLogin.setIcon(new ImageIcon(MordorLogin.class.getResource("/imganes/outline_login_black_24dp.png")));
 		toolBar.add(btnOpcionLogin);
 		
 		btnNewButton = new JButton(" ");
-		btnNewButton.setIcon(new ImageIcon(MordorLogin.class.getResource("/imganes/outline_logout_black_24dp.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		toolBar.add(btnNewButton);
+		
+		button_tabla = new JButton("");
+		button_tabla.setEnabled(false);
+		button_tabla.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		toolBar.add(button_tabla);
 		
 		desktopPane = new JDesktopPane();
 		contentPane.add(desktopPane, BorderLayout.CENTER);
@@ -97,4 +102,9 @@ public class MordorLogin extends JFrame {
 	public JButton getBtnNewButton_preference() {
 		return btnNewButton_preference;
 	}
+
+	public JButton getButton_tabla() {
+		return button_tabla;
+	}
+	
 }
