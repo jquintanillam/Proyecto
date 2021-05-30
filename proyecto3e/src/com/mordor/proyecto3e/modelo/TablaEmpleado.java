@@ -173,7 +173,7 @@ public class TablaEmpleado extends JInternalFrame implements TableModelListener 
 		return table;
 	}
 
-
+//
 	@Override
 	public void tableChanged(TableModelEvent arg0) {
 		if (arg0.getType() == TableModelEvent.UPDATE) {
