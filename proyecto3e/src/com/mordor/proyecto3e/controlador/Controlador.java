@@ -142,10 +142,10 @@ public class Controlador implements ActionListener {
 			propiedades.getProperty("ORACLE_DB_USERNAME");
 			propiedades.getProperty("ORACLE_DB_PASSWORD");
 			
-			mordorPre.setTextField_user(null);
-			mordorPre.setTextField_URL(null);
-			mordorPre.setTxt_driver(null);
-			mordorPre.setTextField_password(null);
+			mordorPre.getTxt_driver().setText(propiedades.getProperty("ORACLE_DB_DRIVERS_CLASS"));
+			mordorPre.getTextField_URL().setText(propiedades.getProperty("ORACLE_DB_URL"));
+			mordorPre.getTextField_user().setText(propiedades.getProperty("ORACLE_DB_USERNAME"));
+			mordorPre.getTextField_password().setText(propiedades.getProperty("ORACLE_DB_PASSWORD"));
 			
 		}catch(Exception e){
 			
